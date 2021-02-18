@@ -6,6 +6,8 @@
     <InstaShayna />
     <PartnersShayna />
     <FooterShayna />
+    <FooterShayna />
+    <FooterShayna />
   </div>
 
 </template>
