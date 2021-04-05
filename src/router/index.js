@@ -2,7 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import Product from '../views/Product.vue'
-import Cart from '../views/ShoppingCart.vue'
+import ShoppingCart from '../views/ShoppingCart.vue'
 import Success from '../views/Success.vue'
 
 Vue.use(VueRouter)
@@ -15,7 +15,7 @@ const routes = [
   },
   {
     path: '/about',
-    name: 'About',
+    name: 'about',
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
@@ -24,17 +24,17 @@ const routes = [
   {
     path: '/product/:id',
     props: true,
-    name: 'Product',
+    name: 'product',
     component: Product
   },
   {
     path: '/cart',
-    name: 'Cart',
-    component: Cart
+    name: 'cart',
+    component: ShoppingCart
   },
   {
     path: '/success',
-    name: 'Success',
+    name: 'success',
     component: Success
   },
 ]
