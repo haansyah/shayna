@@ -60,6 +60,22 @@ export default {
             keranjangUser: []
         };
     },
+    mounted() {
+        axios
+            .get("http://127.0.0.1:8000/api/products")
+            .then(res => (this.products = res.data.data.data))
+            // eslint-disable-next-line no-console
+            .catch(err => console.log(err));
+            
+        if (localStorage.getItem('keranjangUser')) {
+            try {
+                this.keranjangUser = JSON.parse(localStorage.getItem('keranjangUser')); 
+            } catch(e) {
+                localStorage.removeItem('keranjangUser');
+            }
+        }
+        
+    },
     methods:{
         saveKeranjang(idProduct, nameProduct, priceProduct, photoProduct){
             var productStored = {
@@ -70,23 +86,12 @@ export default {
             }
         this.keranjangUser.push(productStored);
         const parsed = JSON.stringify(this.keranjangUser);
-        localStorage.setItem('keranjangUser', parsed)
+        localStorage.setItem('keranjangUser', parsed);
+
+        window.location.reload();
         }
     },
-    mounted() {
-        if (localStorage.getItem('keranjangUser')) {
-            try {
-                this.keranjangUser = JSON.parse(localStorage.getItem('keranjangUser')); 
-            } catch(e) {
-                localStorage.removeItem('keranjangUser');
-            }
-        }
-        axios
-            .get("http://127.0.0.1:8000/api/products")
-            .then(res => (this.products = res.data.data.data))
-            // eslint-disable-next-line no-console
-            .catch(err => console.log(err));
-    }
+    
     
 }
 </script>
